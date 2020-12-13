@@ -94,7 +94,7 @@ class signupstate extends State<signup> {
                       onPressed: () {
 
 
-                        if((passwordController.text==repasswordController.text)&&passwordController.text!=null&&nameController.text!=null&&emailController.text!=null)
+                        if(passwordController.text!='' && nameController.text!='' && emailController.text!='' && (passwordController.text==repasswordController.text))
                         {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
                           );
