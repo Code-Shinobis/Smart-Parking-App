@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_page/generate.dart';
+import 'package:login_page/scan.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class homePage1 extends StatefulWidget {
   @override
@@ -10,7 +13,7 @@ class _HomePageState extends State<homePage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Homepage"),
+        title: Text("Smart Parking App"),
         centerTitle: true,
       ),
       body: Container(
@@ -22,9 +25,9 @@ class _HomePageState extends State<homePage1> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Image(image: NetworkImage("https://media.istockphoto.com/vectors/qr-code-scan-phone-icon-in-comic-style-scanner-in-smartphone-vector-vector-id1166145556")),
-            flatButton("Scan QR CODE", null),
+            flatButton("Scan QR CODE", ScanPage()),
             SizedBox(height: 20.0,),
-            flatButton("Generate QR CODE", null),
+            flatButton("Generate QR CODE", GeneratePage()),
           ],
         ),
       ),

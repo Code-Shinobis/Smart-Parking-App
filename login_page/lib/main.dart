@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/homePage1.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:login_page/signup.dart';
+import 'package:login_page/forgotPass.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-  TextEditingController nameController = TextEditingController();
+  static TextEditingController loginController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -46,10 +49,10 @@ class _State extends State<MyApp> {
                 Container(
                   padding: EdgeInsets.all(10),
                   child: TextField(
-                    controller: nameController,
+                    controller: loginController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'User Name',
+                      labelText: 'User email',
                     ),
                   ),
                 ),
@@ -66,7 +69,8 @@ class _State extends State<MyApp> {
                 ),
                 FlatButton(
                   onPressed: (){
-                    //forgot password screen
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> forgotPass()),
+                    );
                   },
                   textColor: Colors.blue,
                   child: Text('Forgot Password'),
@@ -79,8 +83,31 @@ class _State extends State<MyApp> {
                       color: Colors.blue,
                       child: Text('Login'),
                       onPressed: () {
+                        if(loginController.text=='code'&& passwordController.text == 'shinobis')
+                          {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
                         );
+                        Fluttertoast.showToast(
+                            msg: "Login successsful!",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.blue,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
+                          }
+                        else{
+                          Fluttertoast.showToast(
+                              msg: "Wrong username or password!",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.blue,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
+                        }
                       },
                     )),
                 Container(
@@ -90,11 +117,12 @@ class _State extends State<MyApp> {
                         FlatButton(
                           textColor: Colors.blue,
                           child: Text(
-                            'Sign in',
-                            style: TextStyle(fontSize: 20),
+                            'Sign Up',
+                            style: TextStyle(fontSize: 17),
                           ),
                           onPressed: () {
-                            //signup screen
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> signup()),
+                            );
                           },
                         )
                       ],
