@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_page/homePage1.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class signup extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class signupstate extends State<signup> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repasswordController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -91,11 +93,26 @@ class signupstate extends State<signup> {
                       textColor: Colors.white,
                       color: Colors.blue,
                       child: Text('Sign Up'),
-                      onPressed: () {
+                      onPressed: () async {
 
 
                         if(passwordController.text!='' && nameController.text!='' && emailController.text!='' && (passwordController.text==repasswordController.text))
                         {
+
+                          try {
+                            UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text
+                            );
+                          } on FirebaseAuthException catch (e) {
+                            if (e.code == 'weak-password') {
+                              print('The password provided is too weak.');
+                            } else if (e.code == 'email-already-in-use') {
+                              print('The account already exists for that email.');
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
                           );
                           Fluttertoast.showToast(

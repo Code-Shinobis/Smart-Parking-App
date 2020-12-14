@@ -34,7 +34,7 @@ class GeneratePageState extends State<GeneratePage>{
               height: 40.0,
             ),
             Text(
-              "New QR Link Generator",
+              "User QR Code Generator",
               style: TextStyle(fontSize: 20.0),
             ),
             TextField(
