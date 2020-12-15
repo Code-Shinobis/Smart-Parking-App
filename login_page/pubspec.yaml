@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   flutter:
+
     sdk: flutter
 
 
@@ -32,7 +33,8 @@ dependencies:
   qr_flutter: ^3.2.0
   path_provider: ^1.6.5
   fluttertoast: ^7.1.5
-
+  firebase_core: "0.5.3"
+  firebase_auth: "^0.18.4"
 
 dev_dependencies:
   flutter_test:
@@ -63,8 +65,21 @@ flutter:
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # list giving the asset and other descriptors for the font.
+
+  fonts:
+    - family: painter
+      fonts:
+        - asset: fonts/Painter-LxXg.ttf
+
+    - family: montserrat
+      fonts:
+        - asset: fonts/MontserratAlternates-Bold.otf
+
+    - family: montserrat1
+      fonts:
+        - asset: fonts/MontserratAlternates-Regular.otf
+  # For example:
   # fonts:
   #   - family: Schyler
   #     fonts:
