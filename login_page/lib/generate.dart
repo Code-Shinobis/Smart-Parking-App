@@ -18,7 +18,10 @@ class GeneratePageState extends State<GeneratePage>{
     return Scaffold(
       resizeToAvoidBottomPadding: false, //added this line to avoid bottom overflow error
         appBar: AppBar(
-        title: Text('Your unique QR code'),
+          backgroundColor: Colors.black,
+        title: Text('Your unique QR code',
+        style: TextStyle(
+        fontFamily: 'montserrat1')),
           actions: <Widget>[],
       ),
       body: Container(
@@ -36,7 +39,7 @@ class GeneratePageState extends State<GeneratePage>{
             ),
             Text(
               "User QR Code Generator",
-              style: TextStyle(fontSize: 20.0),
+              style: TextStyle(fontFamily: 'montserrat',fontSize: 20.0),
             ),
             TextField(
               controller: qrdataFeed,
@@ -63,11 +66,11 @@ class GeneratePageState extends State<GeneratePage>{
                 },
                 child: Text(
                   "Generate QR",
-                  style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontFamily: 'montserrat',
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.blue, width: 3.0),
+                    side: BorderSide(color: Colors.black, width: 3.0),
                     borderRadius: BorderRadius.circular(20.0)),
               ),
             )

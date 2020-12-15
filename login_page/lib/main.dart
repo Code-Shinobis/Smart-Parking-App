@@ -72,6 +72,7 @@ void main() async { //the await expression can only be used inside an async func
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); //this method is needed for the app to utilize Firebase services
   runApp(MaterialApp(
+      theme: ThemeData(fontFamily: 'montserrat'),
     home: MyApp(),
   ));
 }
@@ -90,7 +91,9 @@ class _State extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('CODE SHINOBIS'),
+            backgroundColor: Colors.black,
+          title: Text('CODE SHINOBIS',
+        style: TextStyle(fontFamily: 'painter'))
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -102,8 +105,7 @@ class _State extends State<MyApp> {
                     child: Text(
                       'Smart Parking System',
                       style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
+                          fontFamily: 'montserrat1',
                           fontSize: 30),
                     )),
                 Container(
@@ -111,7 +113,7 @@ class _State extends State<MyApp> {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       'Sign in',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontFamily: 'montserrat',fontSize: 20),
                     )),
                 Container(
                   padding: EdgeInsets.all(10),
@@ -139,16 +141,18 @@ class _State extends State<MyApp> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> forgotPass()),
                     );
                   },
-                  textColor: Colors.blue,
-                  child: Text('Forgot Password'),
+                  textColor: Colors.black,
+                  child: Text('Forgot Password', style: TextStyle(
+                    fontFamily: 'montserrat'))
                 ),
                 Container(
                     height: 50,
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: RaisedButton(
                       textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text('Login'),
+                      color: Colors.black,
+                      child: Text('Login', style: TextStyle(
+                        fontFamily: 'montserrat1')),
                       onPressed: () async {
                          try {
                                 UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -206,12 +210,15 @@ class _State extends State<MyApp> {
                 Container(
                     child: Row(
                       children: <Widget>[
-                        Text('Do not have an account?'),
+                        Text('Do not have an account?', style: TextStyle(
+                      fontFamily: 'montserrat')),
                         FlatButton(
-                          textColor: Colors.blue,
+                          textColor: Colors.black,
                           child: Text(
                             'Sign Up',
-                            style: TextStyle(fontSize: 17),
+                            style: TextStyle(
+                              fontFamily: 'montserrat',
+                            fontSize: 17),
                           ),
                           onPressed: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=> signup()),

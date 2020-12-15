@@ -13,7 +13,9 @@ class _HomePageState extends State<homePage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Smart Parking App"),
+        backgroundColor: Colors.black,
+        title: Text("Smart Parking System", style: TextStyle(
+        fontFamily: 'montserrat1')),
         centerTitle: true,
       ),
       body: Container(
@@ -43,10 +45,10 @@ class _HomePageState extends State<homePage1> {
       },
       child: Text(
         text,
-        style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.blue,width: 3.0),
+          side: BorderSide(color: Colors.black,width: 3.0),
           borderRadius: BorderRadius.circular(20.0)),
     );
   }

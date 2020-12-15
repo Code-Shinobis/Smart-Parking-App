@@ -19,7 +19,8 @@ class signupstate extends State<signup> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('CODE SHINOBIS'),
+          backgroundColor: Colors.black,
+          title: Text('CODE SHINOBIS',style: TextStyle(fontFamily: 'painter'))
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -31,7 +32,8 @@ class signupstate extends State<signup> {
                     child: Text(
                       'Smart Parking System',
                       style: TextStyle(
-                          color: Colors.blue,
+                            fontFamily: 'montserrat1',
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
@@ -40,7 +42,7 @@ class signupstate extends State<signup> {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       'Sign Up',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontFamily: 'montserrat', fontSize: 20),
                     )),
                 Container(
                   padding: EdgeInsets.all(10),
@@ -91,8 +93,8 @@ class signupstate extends State<signup> {
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: RaisedButton(
                       textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text('Sign Up'),
+                      color: Colors.black,
+                      child: Text('Sign Up', style: TextStyle(fontFamily: 'montserrat1')),
                       onPressed: () async {
 
 

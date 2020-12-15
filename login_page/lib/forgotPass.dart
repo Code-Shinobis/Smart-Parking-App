@@ -13,7 +13,8 @@ class forgotPassstate extends State<forgotPass> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('CODE SHINOBIS'),
+          backgroundColor: Colors.black,
+          title: Text('CODE SHINOBIS', style: TextStyle(fontFamily: 'painter'))
         ),
         body: Padding(
             padding: EdgeInsets.all(10),
@@ -25,7 +26,8 @@ class forgotPassstate extends State<forgotPass> {
                     child: Text(
                       'Smart Parking System',
                       style: TextStyle(
-                          color: Colors.blue,
+                            fontFamily: 'montserrat1',
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
@@ -34,7 +36,7 @@ class forgotPassstate extends State<forgotPass> {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       'Forgot Password',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontFamily: 'montserrat',fontSize: 20),
                     )),
                 Container(
                   padding: EdgeInsets.all(10),
@@ -54,9 +56,10 @@ class forgotPassstate extends State<forgotPass> {
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: RaisedButton(
                       textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text('Send OTP'),
+                      color: Colors.black,
+                      child: Text('Send OTP', style: TextStyle(fontFamily: 'montserrat1')),
                       onPressed: () {
+                        if(emailController.text!='') {
                           Fluttertoast.showToast(
                               msg: "OTP sent!",
                               toastLength: Toast.LENGTH_LONG,
@@ -66,6 +69,19 @@ class forgotPassstate extends State<forgotPass> {
                               textColor: Colors.white,
                               fontSize: 16.0
                           );
+                        }
+                        else
+                          {
+                            Fluttertoast.showToast(
+                                msg: "Please enter an email id!",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.blue,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          }
                         } //onPressed
 
                     )),

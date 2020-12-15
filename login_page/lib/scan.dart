@@ -7,12 +7,14 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
-  String qrCodeResult = "Not Yet Scanned";
+  String qrCodeResult = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scanner"),
+        backgroundColor: Colors.black,
+        title: Text("Scanner", style: TextStyle(
+        fontFamily: 'montserrat1')),
         centerTitle: true,
       ),
       body: Container(
@@ -22,8 +24,8 @@ class _ScanPageState extends State<ScanPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              "Result",
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+              "RESULT :",
+              style: TextStyle(fontFamily: 'montserrat',fontSize: 25.0, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             Text(
@@ -58,10 +60,10 @@ class _ScanPageState extends State<ScanPage> {
               child: Text(
                 "Open Scanner",
                 style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    TextStyle(fontFamily: 'montserrat',color: Colors.black, fontWeight: FontWeight.bold),
               ),
               shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.blue, width: 3.0),
+                  side: BorderSide(color: Colors.black, width: 3.0),
                   borderRadius: BorderRadius.circular(20.0)),
             )
           ],
@@ -69,6 +71,4 @@ class _ScanPageState extends State<ScanPage> {
       ),
     );
   }
-
-  //its quite simple as that you can use try and catch staatements too for platform exception
 }
