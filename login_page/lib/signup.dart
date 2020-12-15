@@ -102,28 +102,44 @@ class signupstate extends State<signup> {
                           try {
                             UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                                 email: emailController.text,
-                                password: passwordController.text
+                                password: passwordController.text);
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
+                            );
+                            Fluttertoast.showToast(
+                                msg: "Sign up successsful!",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.blue,
+                                textColor: Colors.white,
+                                fontSize: 16.0
                             );
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
-                              print('The password provided is too weak.');
+                              Fluttertoast.showToast(
+                                  msg: "Password too weak!",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.blue,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
                             } else if (e.code == 'email-already-in-use') {
-                              print('The account already exists for that email.');
+                              Fluttertoast.showToast(
+                                  msg: "An account already exists for this email!",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.blue,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
                             }
                           } catch (e) {
                             print(e);
                           }
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
-                          );
-                          Fluttertoast.showToast(
-                              msg: "Sign up successsful!",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.blue,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );
+
                         }
                         else {
                           Fluttertoast.showToast(

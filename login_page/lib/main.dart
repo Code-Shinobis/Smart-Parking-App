@@ -12,7 +12,7 @@ void mainff()
 {
     runApp(App());
   }
-  
+
 class App extends StatefulWidget {
   _AppState createState() => _AppState();
 }
@@ -168,9 +168,25 @@ class _State extends State<MyApp> {
                                                );
                             } on FirebaseAuthException catch (e) {
                                                     if (e.code == 'user-not-found') {
-                                                            print('No user found for that email!');
+                                                      Fluttertoast.showToast(
+                                                          msg: "No user found for that email!",
+                                                          toastLength: Toast.LENGTH_LONG,
+                                                          gravity: ToastGravity.BOTTOM,
+                                                          timeInSecForIosWeb: 1,
+                                                          backgroundColor: Colors.blue,
+                                                          textColor: Colors.white,
+                                                          fontSize: 16.0
+                                                      );
                                                             } else if (e.code == 'wrong-password') {
-                                                            print('Wrong password. Please re-check your password and try again!');
+                                                      Fluttertoast.showToast(
+                                                          msg: "Wrong password! Please re-check your password and try again!",
+                                                          toastLength: Toast.LENGTH_LONG,
+                                                          gravity: ToastGravity.BOTTOM,
+                                                          timeInSecForIosWeb: 1,
+                                                          backgroundColor: Colors.blue,
+                                                          textColor: Colors.white,
+                                                          fontSize: 16.0
+                                                      );
                                                               }
 
                                                                 Fluttertoast.showToast(

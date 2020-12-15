@@ -16,9 +16,10 @@ class GeneratePageState extends State<GeneratePage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('QR Code Generator'),
-        actions: <Widget>[],
+      resizeToAvoidBottomPadding: false, //added this line to avoid bottom overflow error
+        appBar: AppBar(
+        title: Text('Your unique QR code'),
+          actions: <Widget>[],
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
