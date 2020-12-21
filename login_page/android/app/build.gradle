@@ -28,6 +28,8 @@ dependencies {
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.android.support:multidex:1.0.3'
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-firestore'
 }
 
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
