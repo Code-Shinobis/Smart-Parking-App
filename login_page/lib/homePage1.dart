@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:login_page/ProfilePage.dart';
 import 'package:login_page/generate.dart';
 import 'package:login_page/scan.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class homePage1 extends StatefulWidget {
   @override
@@ -9,8 +13,16 @@ class homePage1 extends StatefulWidget {
 }
 
 class _HomePageState extends State<homePage1> {
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final firestoreInstance = FirebaseFirestore.instance;
+  User user = FirebaseAuth.instance.currentUser;
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -26,6 +38,44 @@ class _HomePageState extends State<homePage1> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Align(
+                alignment: Alignment.topRight,
+            child : IconButton(
+
+             icon: Icon(Icons.settings),
+             tooltip: 'Settings',
+             onPressed: () {
+               FirebaseAuth.instance
+                   .authStateChanges()
+                   .listen((User user) {
+                 if (user == null) {
+                   Fluttertoast.showToast(
+                       msg: "No user found for that email!",
+                       toastLength: Toast.LENGTH_LONG,
+                       gravity: ToastGravity.BOTTOM,
+                       timeInSecForIosWeb: 1,
+                       backgroundColor: Colors.blue,
+                       textColor: Colors.white,
+                       fontSize: 16.0
+                   );
+                 } else {
+                   Fluttertoast.showToast(
+                       msg: "User found for that email!",
+                       toastLength: Toast.LENGTH_LONG,
+                       gravity: ToastGravity.BOTTOM,
+                       timeInSecForIosWeb: 1,
+                       backgroundColor: Colors.blue,
+                       textColor: Colors.white,
+                       fontSize: 16.0
+                   );
+                 }
+               });
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()),
+                             );
+                           }
+             )),
+
+
             Image(image: NetworkImage("https://media.istockphoto.com/vectors/qr-code-scan-phone-icon-in-comic-style-scanner-in-smartphone-vector-vector-id1166145556")),
             flatButton("Scan QR CODE", ScanPage()),
             SizedBox(height: 20.0,),
@@ -35,6 +85,7 @@ class _HomePageState extends State<homePage1> {
       ),
     );
   }
+  
 
   Widget flatButton(String text, Widget widget) {
     return FlatButton(

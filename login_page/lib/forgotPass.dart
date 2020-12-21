@@ -55,6 +55,10 @@ class forgotPassstate extends State<forgotPass> {
                     height: 70,
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            side: BorderSide(color: Colors.black)
+                        ),
                       textColor: Colors.white,
                       color: Colors.black,
                       child: Text('Send OTP', style: TextStyle(fontFamily: 'montserrat1')),

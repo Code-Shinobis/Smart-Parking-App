@@ -6,6 +6,11 @@ import 'package:login_page/forgotPass.dart';
 //import the firebase_core and firebase_auth plugin
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'ProfilePage.dart';
 
 // code for Firebase authentication
 void mainff()
@@ -99,6 +104,7 @@ class _State extends State<MyApp> {
             padding: EdgeInsets.all(10),
             child: ListView(
               children: <Widget>[
+
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
@@ -145,10 +151,15 @@ class _State extends State<MyApp> {
                   child: Text('Forgot Password', style: TextStyle(
                     fontFamily: 'montserrat'))
                 ),
+
                 Container(
                     height: 50,
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            side: BorderSide(color: Colors.black)
+                        ),
                       textColor: Colors.white,
                       color: Colors.black,
                       child: Text('Login', style: TextStyle(
@@ -159,7 +170,7 @@ class _State extends State<MyApp> {
                                  email: loginController.text,
                                     password: passwordController.text
                                      );
-                                         Navigator.push(context, MaterialPageRoute(builder: (context)=> homePage1()),
+                                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> homePage1()),
                                                                   );
                                              Fluttertoast.showToast(
                                              msg: "Login successsful!",
@@ -207,6 +218,7 @@ class _State extends State<MyApp> {
 
 
                     )),
+
                 Container(
                     child: Row(
                       children: <Widget>[
@@ -227,7 +239,8 @@ class _State extends State<MyApp> {
                         )
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
-                    ))
+                    )),
+
               ],
             )));
   }

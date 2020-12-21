@@ -1,5 +1,7 @@
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ScanPage extends StatefulWidget {
   @override
@@ -7,7 +9,13 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final firestoreInstance = FirebaseFirestore.instance;
+
   String qrCodeResult = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,18 +50,15 @@ class _ScanPageState extends State<ScanPage> {
               padding: EdgeInsets.all(15.0),
               onPressed: () async {
 
-
-                String codeSanner = await BarcodeScanner.scan();    //barcode scnner
-                setState(() {
-                  qrCodeResult = codeSanner;
-                });
-
-                // try{
-                //   BarcodeScanner.scan()    this method is used to scan the QR code
-                // }catch (e){
-                //   BarcodeScanner.CameraAccessDenied;   we can print that user has denied for the permisions
-                //   BarcodeScanner.UserCanceled;   we can print on the page that user has cancelled
-                // }
+                  String codeScanner = await BarcodeScanner.scan();    //qr scanner
+                  qrCodeResult = "UserXYZ - UserXYZ@gmail.com"; // default user data stored as scan result in case scan is not possible
+                  var firebaseUser =  FirebaseAuth.instance.currentUser; // this code is for setting the document id in firestore to the firebase auth userID
+                  firestoreInstance.collection("parking").doc(firebaseUser.uid).set(
+                      {
+                        "User info" : qrCodeResult
+                      }).then((_){
+                    print(firebaseUser.uid);
+                  });
 
 
               },
