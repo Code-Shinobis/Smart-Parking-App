@@ -22,8 +22,6 @@ An app made using Flutter(for InOut7.0).
 * Once the user gets his QR code scanned and checks in, his data is stored in a dynamic database using MySQL and PHP and the details of the parking lot and available parking spots in the parking lot are displayed in the app.
 * To find the available parking spots, use the footage of all the CCTV camera to train an ML model to recognize empty parking spots by using image recognition.
 * Now, only the user who has checked-in can check out that particular vehicle. During check-out, compare the user data with the already stored data and check-out only if match is found and then delete that entry.
-* Send a notification to the user once the vehicle is checked-out, and also display the amount they need to pay(if any)//incomplete
-* Redirect the user to any selected online payment app if the user selects the option.(optional)//incomplete
 
 #### HOW TO USE :
 
