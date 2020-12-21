@@ -18,10 +18,9 @@ An app made using Flutter(for InOut7.0).
 * The system is implemented within an application made using Flutter.
 * User needs to either Sign-In or Sign-Up for using the app and his information is to be stored and verified using the Cloud FireBase database and FirebaseAuth Authentication.
 * Once the user has logged in, he can generate his unique QR code for displaying at the parking lot and either check-in or check-out.
-* Unique QR codes to be generated for each user and each parking lot and their information should be stored in a database using Firebase/MySQL and PHP.
-* Once the user gets his QR code scanned and checks in, his data is stored in a dynamic database using MySQL and PHP and the details of the parking lot and available parking spots in the parking lot are displayed in the app.
-* To find the available parking spots, use the footage of all the CCTV camera to train an ML model to recognize empty parking spots by using image recognition.
-* Now, only the user who has checked-in can check out that particular vehicle. During check-out, compare the user data with the already stored data and check-out only if match is found and then delete that entry.
+* Unique QR codes to be generated for each user and each parking lot and their information should be stored in a database using Cloud Firestore.
+* Once the user gets his QR code scanned and checks in, his data is stored in a dynamic database using Cloud Firestore and the details of the parking lot and available parking spots in the parking lot are displayed in the app.//incomplete
+* Now, only the user who has checked-in can check out that particular vehicle. During check-out, compare the user data with the already stored data and check-out only if match is found and then delete that entry.//incomplete
 
 #### HOW TO USE :
 
