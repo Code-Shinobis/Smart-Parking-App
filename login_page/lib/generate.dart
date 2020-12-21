@@ -3,6 +3,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:login_page/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GeneratePage extends StatefulWidget{
   @override
@@ -10,11 +12,20 @@ class GeneratePage extends StatefulWidget{
 }
 
 class GeneratePageState extends State<GeneratePage>{
-  String qrData =
-      "Code Shinobis";  // already generated qr code when the page opens
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final firestoreInstance = FirebaseFirestore.instance;
+
+  var firebaseUser =  FirebaseAuth.instance.currentUser;
+
+  String qrData = "Code Shinobis";// already generated qr code when the page opens
 
   @override
   Widget build(BuildContext context) {
+
+    final qrdataFeed = firebaseUser.uid; //The qr data is assigned with the user's unique firebase userid so that it would be unique for each user
+
     return Scaffold(
       resizeToAvoidBottomPadding: false, //added this line to avoid bottom overflow error
         appBar: AppBar(
@@ -41,31 +52,25 @@ class GeneratePageState extends State<GeneratePage>{
               "User QR Code Generator",
               style: TextStyle(fontFamily: 'montserrat',fontSize: 20.0),
             ),
-            TextField(
-              controller: qrdataFeed,
-              decoration: InputDecoration(
-                hintText: "Input your email here",
-              ),
-            ),
             Padding(
               padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
               child: FlatButton(
                 padding: EdgeInsets.all(15.0),
                 onPressed: () async {
 
-                  if (qrdataFeed.text.isEmpty) {        //a little validation for the textfield
+                  if (qrdataFeed=="") {        //a little validation for the textfield
                     setState(() {
                       qrData = "";
                     });
                   } else {
                     setState(() {
-                      qrData = qrdataFeed.text;
+                      qrData = qrdataFeed;
                     });
                   }
 
                 },
                 child: Text(
-                  "Generate QR",
+                  "Generate your unique QR",
                   style: TextStyle(fontFamily: 'montserrat',
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
@@ -80,5 +85,5 @@ class GeneratePageState extends State<GeneratePage>{
     );
   }
 
-  final qrdataFeed = TextEditingController();
+
 }
